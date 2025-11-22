@@ -37,7 +37,9 @@ jobs:
 
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: make install-dependencies
+        run: |
+          chmod +x ./scripts/*.sh
+          make install-dependencies
 
         # https://pkg.go.dev/cmd/go#hdr-Compile_packages_and_dependencies
         # https://pkg.go.dev/cmd/go#hdr-Package_lists_and_patterns
