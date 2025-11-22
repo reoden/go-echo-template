@@ -5,8 +5,8 @@ import (
 	"runtime/debug"
 	"strings"
 
-	"github.com/reoden/go-echo-template/internal/pkg/http/httperrors/contracts"
-	defaultLogger "github.com/reoden/go-echo-template/internal/pkg/logger/defaultlogger"
+	"github.com/reoden/go-echo-template/pkg/http/httperrors/contracts"
+	defaultLogger "github.com/reoden/go-echo-template/pkg/logger/defaultlogger"
 
 	"emperror.dev/errors"
 )

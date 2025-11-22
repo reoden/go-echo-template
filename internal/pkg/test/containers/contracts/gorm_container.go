@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/reoden/go-echo-template/internal/pkg/database/options"
+	gormPostgres "github.com/reoden/go-echo-template/pkg/postgresgorm"
 )
 
 type PostgresContainerOptions struct {
@@ -24,6 +24,6 @@ type GormContainer interface {
 		ctx context.Context,
 		t *testing.T,
 		options ...*PostgresContainerOptions,
-	) (*options.GormOptions, error)
+	) (*gormPostgres.GormOptions, error)
 	Cleanup(ctx context.Context) error
 }

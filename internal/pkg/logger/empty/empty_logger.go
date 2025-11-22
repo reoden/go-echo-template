@@ -3,8 +3,8 @@ package empty
 import (
 	"time"
 
-	"github.com/reoden/go-echo-template/internal/pkg/logger"
-	"github.com/reoden/go-echo-template/internal/pkg/logger/models"
+	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-echo-template/pkg/logger/models"
 )
 
 var EmptyLogger logger.Logger = &emptyLogger{}

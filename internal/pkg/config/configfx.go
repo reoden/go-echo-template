@@ -1,15 +1,17 @@
 package config
 
 import (
-	"github.com/reoden/go-echo-template/internal/pkg/config/environment"
+	"github.com/reoden/go-echo-template/pkg/config/environment"
 
 	"go.uber.org/fx"
 )
 
+// Module provided to fxlog
+// https://uber-go.github.io/fx/modules.html
 var Module = fx.Module(
 	"configfx",
 	fx.Provide(func() environment.Environment {
-		return environment.ConfigEnv()
+		return environment.ConfigAppEnv()
 	}),
 )
 
@@ -17,7 +19,7 @@ var ModuleFunc = func(e environment.Environment) fx.Option {
 	return fx.Module(
 		"configfx",
 		fx.Provide(func() environment.Environment {
-			return environment.ConfigEnv()
+			return environment.ConfigAppEnv(e)
 		}),
 	)
 }

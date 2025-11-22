@@ -3,8 +3,8 @@ package contracts
 import (
 	"context"
 
-	"github.com/reoden/go-echo-template/internal/pkg/config/environment"
-	"github.com/reoden/go-echo-template/internal/pkg/logger"
+	"github.com/reoden/go-echo-template/pkg/config/environment"
+	"github.com/reoden/go-echo-template/pkg/logger"
 
 	"go.uber.org/fx"
 )

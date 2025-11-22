@@ -1,10 +1,10 @@
 package config
 
 import (
-	"github.com/reoden/go-echo-template/internal/pkg/config"
-	"github.com/reoden/go-echo-template/internal/pkg/config/environment"
-	"github.com/reoden/go-echo-template/internal/pkg/logger/models"
-	typeMapper "github.com/reoden/go-echo-template/internal/pkg/reflection/typemapper"
+	"github.com/reoden/go-echo-template/pkg/config"
+	"github.com/reoden/go-echo-template/pkg/config/environment"
+	"github.com/reoden/go-echo-template/pkg/logger/models"
+	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
 
 	"github.com/iancoleman/strcase"
 )

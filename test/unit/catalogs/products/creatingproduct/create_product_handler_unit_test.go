@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/reoden/go-echo-template/internal/catalogs/products/features/creatingproduct/commands"
-	"github.com/reoden/go-echo-template/internal/catalogs/products/features/creatingproduct/dtos"
 	customErrors "github.com/reoden/go-echo-template/internal/pkg/http/httperrors/customerrors"
+	commands2 "github.com/reoden/go-echo-template/internal/services/catalogs/products/features/creatingproduct/commands"
+	"github.com/reoden/go-echo-template/internal/services/catalogs/products/features/creatingproduct/dtos"
 	"github.com/reoden/go-echo-template/test/testfixtures/unittest"
 
 	"github.com/brianvoe/gofakeit/v6"
@@ -22,7 +22,7 @@ import (
 
 type createProductHandlerUnitTests struct {
 	*unittest.UnitTestSharedFixture
-	handler mediatr.RequestHandler[*commands.CreateProductCommand, *dtos.CreateProductCommandResponse]
+	handler mediatr.RequestHandler[*commands2.CreateProductCommand, *dtos.CreateProductCommandResponse]
 }
 
 func TestCreateProductHandlerUnit(t *testing.T) {
@@ -35,7 +35,7 @@ func TestCreateProductHandlerUnit(t *testing.T) {
 func (c *createProductHandlerUnitTests) SetupTest() {
 	// call base SetupTest hook before running child hook
 	c.UnitTestSharedFixture.SetupTest()
-	c.handler = commands.NewCreateProductCommandHandler(c.ProductRepository)
+	c.handler = commands2.NewCreateProductCommandHandler(c.ProductRepository)
 }
 
 func (c *createProductHandlerUnitTests) TearDownTest() {
@@ -46,7 +46,7 @@ func (c *createProductHandlerUnitTests) TearDownTest() {
 func (c *createProductHandlerUnitTests) Test_Handle_Should_Create_New_Product_With_Valid_Data() {
 	id := uuid.NewV4()
 
-	createProduct := &commands.CreateProductCommand{
+	createProduct := &commands2.CreateProductCommand{
 		ProductID:   id,
 		Name:        gofakeit.Name(),
 		CreatedAt:   time.Now(),
@@ -54,7 +54,7 @@ func (c *createProductHandlerUnitTests) Test_Handle_Should_Create_New_Product_Wi
 		Price:       gofakeit.Price(100, 1000),
 	}
 
-	product := commands.MapCreateProductToProduct(createProduct)
+	product := commands2.MapCreateProductToProduct(createProduct)
 
 	c.ProductRepository.On("CreateProduct", c.Ctx, product).
 		Return(product, nil).
@@ -74,7 +74,7 @@ func (c *createProductHandlerUnitTests) Test_Handle_Should_Create_New_Product_Wi
 
 func (c *createProductHandlerUnitTests) Test_Handle_Should_Return_Error_When_Repository_Fails() {
 	id := uuid.NewV4()
-	createProduct := &commands.CreateProductCommand{
+	createProduct := &commands2.CreateProductCommand{
 		ProductID:   id,
 		Name:        gofakeit.Name(),
 		CreatedAt:   time.Now(),
@@ -82,7 +82,7 @@ func (c *createProductHandlerUnitTests) Test_Handle_Should_Return_Error_When_Rep
 		Price:       gofakeit.Price(100, 1000),
 	}
 
-	product := commands.MapCreateProductToProduct(createProduct)
+	product := commands2.MapCreateProductToProduct(createProduct)
 
 	c.ProductRepository.On("CreateProduct", c.Ctx, product).
 		Return(nil, customErrors.NewNotFoundError(fmt.Sprintf("product with id %s not found", createProduct.ProductID))).

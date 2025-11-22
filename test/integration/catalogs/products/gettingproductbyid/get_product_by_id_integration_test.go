@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/reoden/go-echo-template/internal/catalogs/products/features/gettingproductbyid/dtos"
-	"github.com/reoden/go-echo-template/internal/catalogs/products/features/gettingproductbyid/queries"
+	"github.com/reoden/go-echo-template/internal/services/catalogs/products/features/gettingproductbyid/dtos"
+	"github.com/reoden/go-echo-template/internal/services/catalogs/products/features/gettingproductbyid/queries"
 	"github.com/reoden/go-echo-template/test/testfixtures/integration"
 
 	"github.com/mehdihadeli/go-mediatr"

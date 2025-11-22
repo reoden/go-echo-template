@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/reoden/go-echo-template/internal/pkg/http/httperrors/contracts"
+	"github.com/reoden/go-echo-template/pkg/http/httperrors/contracts"
 
 	"emperror.dev/errors"
 )

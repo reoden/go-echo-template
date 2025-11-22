@@ -10,7 +10,8 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7"
   },
   "main": "commitlint.config.js",
   "directories": {
@@ -101,6 +102,14 @@
   "repository": {
     "type": "git",
     "url": "github.com/reoden/go-echo-template"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.go": ["gofmt -w"]
   },
   "keywords": [
     "go-echo-template"

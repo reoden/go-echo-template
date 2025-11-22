@@ -6,10 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/reoden/go-echo-template/internal/pkg/database"
-	databaseoptions "github.com/reoden/go-echo-template/internal/pkg/database/options"
-	"github.com/reoden/go-echo-template/internal/pkg/logger"
-	"github.com/reoden/go-echo-template/internal/pkg/test/containers/contracts"
+	"github.com/reoden/go-echo-template/pkg/logger"
+	gormPostgres "github.com/reoden/go-echo-template/pkg/postgresgorm"
+	"github.com/reoden/go-echo-template/pkg/test/containers/contracts"
 
 	"emperror.dev/errors"
 	"github.com/docker/go-connections/nat"
@@ -48,7 +47,7 @@ func (g *gormTestContainers) PopulateContainerOptions(
 	ctx context.Context,
 	t *testing.T,
 	options ...*contracts.PostgresContainerOptions,
-) (*databaseoptions.GormOptions, error) {
+) (*gormPostgres.GormOptions, error) {
 	// https://github.com/testcontainers/testcontainers-go
 	// https://dev.to/remast/go-integration-tests-using-testcontainers-9o5
 	containerReq := g.getRunOptions(options...)
@@ -64,15 +63,13 @@ func (g *gormTestContainers) PopulateContainerOptions(
 		return nil, err
 	}
 
-	//// if you want to terminate container manually you should set `hostConfig.AutoRemove = false`, because they can terminate container concurrently
-	//// Clean up the container after the test is complete
-	//t.Cleanup(func() {
-	//	terminateCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	//	defer cancel()
-	//	if err := dbContainer.Terminate(terminateCtx); err != nil {
-	//		t.Fatalf("failed to terminate container: %s", err)
-	//	}
-	//})
+	// Clean up the container after the test is complete
+	t.Cleanup(func() {
+		if err := dbContainer.Terminate(ctx); err != nil {
+			t.Fatalf("failed to terminate container: %s", err)
+		}
+		time.Sleep(time.Second * 1)
+	})
 
 	// get a free random host hostPort
 	hostPort, err := dbContainer.MappedPort(ctx, nat.Port(g.defaultOptions.Port))
@@ -93,7 +90,7 @@ func (g *gormTestContainers) PopulateContainerOptions(
 
 	g.container = dbContainer
 
-	gormOptions := &databaseoptions.GormOptions{
+	gormOptions := &gormPostgres.GormOptions{
 		Port:     g.defaultOptions.HostPort,
 		Host:     host,
 		Password: g.defaultOptions.Password,
@@ -101,7 +98,6 @@ func (g *gormTestContainers) PopulateContainerOptions(
 		SSLMode:  false,
 		User:     g.defaultOptions.UserName,
 	}
-
 	return gormOptions, nil
 }
 
@@ -115,7 +111,7 @@ func (g *gormTestContainers) Start(
 		return nil, err
 	}
 
-	db, err := database.NewGorm(gormOptions)
+	db, err := gormPostgres.NewGorm(gormOptions)
 
 	return db, nil
 }
@@ -163,7 +159,6 @@ func (g *gormTestContainers) getRunOptions(
 		WaitingFor:   wait.ForAll(strategies...).WithDeadline(deadline),
 		Cmd:          []string{"postgres", "-c", "fsync=off"},
 		HostConfigModifier: func(hostConfig *container.HostConfig) {
-			// auto remove container after test
 			hostConfig.AutoRemove = true
 		},
 		Env: map[string]string{

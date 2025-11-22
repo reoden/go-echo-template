@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/reoden/go-echo-template/internal/catalogs/products/features/creatingproduct/dtos"
+	"github.com/reoden/go-echo-template/internal/services/catalogs/products/features/creatingproduct/dtos"
 	"github.com/reoden/go-echo-template/test/testfixtures/integration"
 
 	"github.com/brianvoe/gofakeit/v6"

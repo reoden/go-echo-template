@@ -5,10 +5,10 @@ import (
 	"testing"
 
 	"github.com/reoden/go-echo-template/config"
-	"github.com/reoden/go-echo-template/internal/catalogs/products/models"
 	"github.com/reoden/go-echo-template/internal/pkg/config/environment"
 	"github.com/reoden/go-echo-template/internal/pkg/logger"
 	defaultLogger "github.com/reoden/go-echo-template/internal/pkg/logger/defaultlogger"
+	"github.com/reoden/go-echo-template/internal/services/catalogs/products/models"
 	"github.com/reoden/go-echo-template/mocks"
 
 	"github.com/stretchr/testify/suite"

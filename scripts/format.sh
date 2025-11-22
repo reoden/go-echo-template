@@ -6,9 +6,19 @@
 # In a bash script, set -e is a command that enables the "exit immediately" option. When this option is set, the script will terminate immediately if any command within the script exits with a non-zero status (indicating an error).
 set -e
 
+readonly service="$1"
+
+if [ "$service" = "pkg" ]; then
+      cd "./internal/pkg"
+# Check if input is not empty or null
+elif [ -n "$service"  ]; then
+    cd "./internal/services/$service"
+fi
+
 # https://github.com/segmentio/golines
 # # will do `gofmt` internally
 golines -m 120 -w --ignore-generated .
+
 
 # # https://pkg.go.dev/golang.org/x/tools/cmd/goimports
 # goimports -l -w .
@@ -20,7 +30,6 @@ golines -m 120 -w --ignore-generated .
 # will do `gofmt` internally if we use -format
 # -rm-unused, -set-alias have some errors ---> goimports-reviser -rm-unused -set-alias -format -recursive ./...
 # goimports-reviser -company-prefixes "github.com/reoden" -project-name "github.com/reoden/go-echo-template" -rm-unused -set-alias -imports-order "std,general,company,project,blanked,dotted" -recursive ./...
-
 
 gci write --skip-generated -s standard -s "prefix(github.com/reoden/go-echo-template)" -s default -s blank -s dot --custom-order  .
 

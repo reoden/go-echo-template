@@ -5,9 +5,8 @@ package mocks
 import (
 	context "context"
 
+	"github.com/reoden/go-echo-template/internal/services/catalogs/products/models"
 	mock "github.com/stretchr/testify/mock"
-
-	models "github.com/reoden/go-echo-template/internal/catalogs/products/models"
 
 	uuid "github.com/satori/go.uuid"
 )

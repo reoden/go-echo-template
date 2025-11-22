@@ -4,11 +4,11 @@ import (
 	"os"
 	"time"
 
-	"github.com/reoden/go-echo-template/internal/pkg/config/environment"
-	"github.com/reoden/go-echo-template/internal/pkg/constants"
-	"github.com/reoden/go-echo-template/internal/pkg/logger"
-	config2 "github.com/reoden/go-echo-template/internal/pkg/logger/config"
-	"github.com/reoden/go-echo-template/internal/pkg/logger/models"
+	"github.com/reoden/go-echo-template/pkg/config/environment"
+	"github.com/reoden/go-echo-template/pkg/constants"
+	"github.com/reoden/go-echo-template/pkg/logger"
+	config2 "github.com/reoden/go-echo-template/pkg/logger/config"
+	"github.com/reoden/go-echo-template/pkg/logger/models"
 
 	"github.com/nolleh/caption_json_formatter"
 	"github.com/sirupsen/logrus"

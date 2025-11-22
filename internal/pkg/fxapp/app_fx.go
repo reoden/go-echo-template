@@ -3,12 +3,12 @@ package fxapp
 import (
 	"time"
 
-	"github.com/reoden/go-echo-template/internal/pkg/config"
-	logConfig "github.com/reoden/go-echo-template/internal/pkg/logger/config"
-	"github.com/reoden/go-echo-template/internal/pkg/logger/external/fxlog"
-	"github.com/reoden/go-echo-template/internal/pkg/logger/logrous"
-	"github.com/reoden/go-echo-template/internal/pkg/logger/models"
-	"github.com/reoden/go-echo-template/internal/pkg/logger/zap"
+	"github.com/reoden/go-echo-template/pkg/config"
+	logConfig "github.com/reoden/go-echo-template/pkg/logger/config"
+	"github.com/reoden/go-echo-template/pkg/logger/external/fxlog"
+	"github.com/reoden/go-echo-template/pkg/logger/logrous"
+	"github.com/reoden/go-echo-template/pkg/logger/models"
+	"github.com/reoden/go-echo-template/pkg/logger/zap"
 
 	"go.uber.org/fx"
 )

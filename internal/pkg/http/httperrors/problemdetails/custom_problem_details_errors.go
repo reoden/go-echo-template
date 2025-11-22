@@ -3,11 +3,13 @@ package problemDetails
 import (
 	"net/http"
 	"time"
+
+	"github.com/reoden/go-echo-template/pkg/constants"
 )
 
 func NewValidationProblemDetail(detail string, stackTrace string) ProblemDetailErr {
 	validationError := &problemDetail{
-		Title:      ErrBadRequestTitle,
+		Title:      constants.ErrBadRequestTitle,
 		Detail:     detail,
 		Status:     http.StatusBadRequest,
 		Type:       getDefaultType(http.StatusBadRequest),
@@ -20,7 +22,7 @@ func NewValidationProblemDetail(detail string, stackTrace string) ProblemDetailE
 
 func NewConflictProblemDetail(detail string, stackTrace string) ProblemDetailErr {
 	return &problemDetail{
-		Title:      ErrConflictTitle,
+		Title:      constants.ErrConflictTitle,
 		Detail:     detail,
 		Status:     http.StatusConflict,
 		Type:       getDefaultType(http.StatusConflict),
@@ -31,7 +33,7 @@ func NewConflictProblemDetail(detail string, stackTrace string) ProblemDetailErr
 
 func NewBadRequestProblemDetail(detail string, stackTrace string) ProblemDetailErr {
 	return &problemDetail{
-		Title:      ErrBadRequestTitle,
+		Title:      constants.ErrBadRequestTitle,
 		Detail:     detail,
 		Status:     http.StatusBadRequest,
 		Type:       getDefaultType(http.StatusBadRequest),
@@ -42,7 +44,7 @@ func NewBadRequestProblemDetail(detail string, stackTrace string) ProblemDetailE
 
 func NewNotFoundErrorProblemDetail(detail string, stackTrace string) ProblemDetailErr {
 	return &problemDetail{
-		Title:      ErrNotFoundTitle,
+		Title:      constants.ErrNotFoundTitle,
 		Detail:     detail,
 		Status:     http.StatusNotFound,
 		Type:       getDefaultType(http.StatusNotFound),
@@ -53,7 +55,7 @@ func NewNotFoundErrorProblemDetail(detail string, stackTrace string) ProblemDeta
 
 func NewUnAuthorizedErrorProblemDetail(detail string, stackTrace string) ProblemDetailErr {
 	return &problemDetail{
-		Title:      ErrUnauthorizedTitle,
+		Title:      constants.ErrUnauthorizedTitle,
 		Detail:     detail,
 		Status:     http.StatusUnauthorized,
 		Type:       getDefaultType(http.StatusUnauthorized),
@@ -64,7 +66,7 @@ func NewUnAuthorizedErrorProblemDetail(detail string, stackTrace string) Problem
 
 func NewForbiddenProblemDetail(detail string, stackTrace string) ProblemDetailErr {
 	return &problemDetail{
-		Title:      ErrForbiddenTitle,
+		Title:      constants.ErrForbiddenTitle,
 		Detail:     detail,
 		Status:     http.StatusForbidden,
 		Type:       getDefaultType(http.StatusForbidden),
@@ -75,7 +77,7 @@ func NewForbiddenProblemDetail(detail string, stackTrace string) ProblemDetailEr
 
 func NewInternalServerProblemDetail(detail string, stackTrace string) ProblemDetailErr {
 	return &problemDetail{
-		Title:      ErrInternalServerErrorTitle,
+		Title:      constants.ErrInternalServerErrorTitle,
 		Detail:     detail,
 		Status:     http.StatusInternalServerError,
 		Type:       getDefaultType(http.StatusInternalServerError),
@@ -86,7 +88,7 @@ func NewInternalServerProblemDetail(detail string, stackTrace string) ProblemDet
 
 func NewDomainProblemDetail(status int, detail string, stackTrace string) ProblemDetailErr {
 	return &problemDetail{
-		Title:      ErrDomainTitle,
+		Title:      constants.ErrDomainTitle,
 		Detail:     detail,
 		Status:     status,
 		Type:       getDefaultType(http.StatusBadRequest),
@@ -97,7 +99,7 @@ func NewDomainProblemDetail(status int, detail string, stackTrace string) Proble
 
 func NewApplicationProblemDetail(status int, detail string, stackTrace string) ProblemDetailErr {
 	return &problemDetail{
-		Title:      ErrApplicationTitle,
+		Title:      constants.ErrApplicationTitle,
 		Detail:     detail,
 		Status:     status,
 		Type:       getDefaultType(status),
@@ -108,7 +110,7 @@ func NewApplicationProblemDetail(status int, detail string, stackTrace string) P
 
 func NewApiProblemDetail(status int, detail string, stackTrace string) ProblemDetailErr {
 	return &problemDetail{
-		Title:      ErrApiTitle,
+		Title:      constants.ErrApiTitle,
 		Detail:     detail,
 		Status:     status,
 		Type:       getDefaultType(status),

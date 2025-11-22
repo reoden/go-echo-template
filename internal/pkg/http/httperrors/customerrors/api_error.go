@@ -1,8 +1,6 @@
 package customErrors
 
 import (
-	"net/http"
-
 	"emperror.dev/errors"
 )
 
@@ -19,11 +17,7 @@ func NewApiError(message string, code int) ApiError {
 	return apiError
 }
 
-func NewApiErrorWrap(err error, message string) ApiError {
-	return NewApiErrorWrapWithCode(err, http.StatusInternalServerError, message)
-}
-
-func NewApiErrorWrapWithCode(err error, code int, message string) ApiError {
+func NewApiErrorWrap(err error, code int, message string) ApiError {
 	if err == nil {
 		return NewApiError(message, code)
 	}

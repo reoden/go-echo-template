@@ -6,12 +6,12 @@ import (
 	"time"
 
 	"github.com/reoden/go-echo-template/config"
-	"github.com/reoden/go-echo-template/internal/catalogs/products/contracts"
-	"github.com/reoden/go-echo-template/internal/catalogs/products/models"
-	"github.com/reoden/go-echo-template/internal/catalogs/shared/app"
 	"github.com/reoden/go-echo-template/internal/pkg/config/environment"
 	"github.com/reoden/go-echo-template/internal/pkg/logger"
 	gotmtestcontainer "github.com/reoden/go-echo-template/internal/pkg/test/containers/testcontainer/gorm"
+	"github.com/reoden/go-echo-template/internal/services/catalogs/products/contracts"
+	"github.com/reoden/go-echo-template/internal/services/catalogs/products/models"
+	"github.com/reoden/go-echo-template/internal/services/catalogs/shared/app"
 
 	"emperror.dev/errors"
 	"github.com/brianvoe/gofakeit/v6"

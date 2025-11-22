@@ -1,13 +1,13 @@
 package fxapp
 
 import (
-	"github.com/reoden/go-echo-template/internal/pkg/config/environment"
-	"github.com/reoden/go-echo-template/internal/pkg/fxapp/contracts"
-	"github.com/reoden/go-echo-template/internal/pkg/logger"
-	loggerConfig "github.com/reoden/go-echo-template/internal/pkg/logger/config"
-	"github.com/reoden/go-echo-template/internal/pkg/logger/logrous"
-	"github.com/reoden/go-echo-template/internal/pkg/logger/models"
-	"github.com/reoden/go-echo-template/internal/pkg/logger/zap"
+	"github.com/reoden/go-echo-template/pkg/config/environment"
+	"github.com/reoden/go-echo-template/pkg/fxapp/contracts"
+	"github.com/reoden/go-echo-template/pkg/logger"
+	loggerConfig "github.com/reoden/go-echo-template/pkg/logger/config"
+	"github.com/reoden/go-echo-template/pkg/logger/logrous"
+	"github.com/reoden/go-echo-template/pkg/logger/models"
+	"github.com/reoden/go-echo-template/pkg/logger/zap"
 
 	"go.uber.org/fx"
 )

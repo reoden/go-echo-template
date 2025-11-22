@@ -6,9 +6,10 @@ import (
 	"net/http"
 	"reflect"
 
-	customErrors "github.com/reoden/go-echo-template/internal/pkg/http/httperrors/customerrors"
-	typeMapper "github.com/reoden/go-echo-template/internal/pkg/reflection/typemapper"
-	errorUtils "github.com/reoden/go-echo-template/internal/pkg/utils/errorutils"
+	"github.com/reoden/go-echo-template/pkg/constants"
+	customErrors "github.com/reoden/go-echo-template/pkg/http/httperrors/customerrors"
+	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
+	errorUtils "github.com/reoden/go-echo-template/pkg/utils/errorutils"
 
 	"emperror.dev/errors"
 	"github.com/go-playground/validator"
@@ -101,7 +102,7 @@ func ParseError(err error) ProblemDetailErr {
 		case errors.Is(err, context.DeadlineExceeded):
 			return NewProblemDetail(
 				http.StatusRequestTimeout,
-				ErrRequestTimeoutTitle,
+				constants.ErrRequestTimeoutTitle,
 				err.Error(),
 				stackTrace,
 			)

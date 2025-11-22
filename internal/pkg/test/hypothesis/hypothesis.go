@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	testUtils "github.com/reoden/go-echo-template/internal/pkg/test/utils"
+	testUtils "github.com/reoden/go-echo-template/pkg/test/utils"
 
 	"github.com/goccy/go-reflect"
 	"github.com/stretchr/testify/assert"

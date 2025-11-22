@@ -1,9 +1,9 @@
 package test
 
 import (
-	"github.com/reoden/go-echo-template/internal/pkg/config/environment"
-	"github.com/reoden/go-echo-template/internal/pkg/fxapp"
-	"github.com/reoden/go-echo-template/internal/pkg/fxapp/contracts"
+	"github.com/reoden/go-echo-template/pkg/config/environment"
+	"github.com/reoden/go-echo-template/pkg/fxapp"
+	"github.com/reoden/go-echo-template/pkg/fxapp/contracts"
 
 	"go.uber.org/fx/fxtest"
 )

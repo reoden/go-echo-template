@@ -9,11 +9,11 @@ import (
 	"testing"
 	"time"
 
-	dtos2 "github.com/reoden/go-echo-template/internal/catalogs/products/features/gettingproductbyid/dtos"
-	"github.com/reoden/go-echo-template/internal/catalogs/products/features/gettingproductbyid/queries"
-	"github.com/reoden/go-echo-template/internal/catalogs/products/mappings"
-	"github.com/reoden/go-echo-template/internal/catalogs/products/models"
 	customErrors "github.com/reoden/go-echo-template/internal/pkg/http/httperrors/customerrors"
+	dtos2 "github.com/reoden/go-echo-template/internal/services/catalogs/products/features/gettingproductbyid/dtos"
+	queries2 "github.com/reoden/go-echo-template/internal/services/catalogs/products/features/gettingproductbyid/queries"
+	"github.com/reoden/go-echo-template/internal/services/catalogs/products/mappings"
+	"github.com/reoden/go-echo-template/internal/services/catalogs/products/models"
 	"github.com/reoden/go-echo-template/test/testfixtures/unittest"
 
 	"github.com/brianvoe/gofakeit/v6"
@@ -24,7 +24,7 @@ import (
 
 type getProductByIdHandlerUnitTests struct {
 	*unittest.UnitTestSharedFixture
-	handler mediatr.RequestHandler[*queries.GetProductByIdQuery, *dtos2.GetProductByIdQueryResponse]
+	handler mediatr.RequestHandler[*queries2.GetProductByIdQuery, *dtos2.GetProductByIdQueryResponse]
 }
 
 func TestCreateProductHandlerUnit(t *testing.T) {
@@ -37,7 +37,7 @@ func TestCreateProductHandlerUnit(t *testing.T) {
 func (c *getProductByIdHandlerUnitTests) SetupTest() {
 	// call base SetupTest hook before running child hook
 	c.UnitTestSharedFixture.SetupTest()
-	c.handler = queries.NewGetProductByIdHandler(c.ProductRepository)
+	c.handler = queries2.NewGetProductByIdHandler(c.ProductRepository)
 }
 
 func (c *getProductByIdHandlerUnitTests) TearDownTest() {
@@ -61,7 +61,7 @@ func (g *getProductByIdHandlerUnitTests) Test_Handle_Should_Return_Product_When_
 		Return(expectedProduct, nil).
 		Once()
 
-	query := &queries.GetProductByIdQuery{ProductID: productID}
+	query := &queries2.GetProductByIdQuery{ProductID: productID}
 
 	// Act
 	response, err := g.handler.Handle(g.Ctx, query)
@@ -83,7 +83,7 @@ func (g *getProductByIdHandlerUnitTests) Test_Handle_Should_Return_Error_When_Pr
 		Return(nil, customErrors.NewNotFoundError(fmt.Sprintf("product with id %s not found", productID))).
 		Once()
 
-	query := &queries.GetProductByIdQuery{ProductID: productID}
+	query := &queries2.GetProductByIdQuery{ProductID: productID}
 
 	// Act
 	response, err := g.handler.Handle(g.Ctx, query)
@@ -111,7 +111,7 @@ func (g *getProductByIdHandlerUnitTests) Test_Handle_Should_Return_Error_When_Qu
 
 func (g *getProductByIdHandlerUnitTests) Test_Handle_Should_Return_Error_When_ProductID_Is_Zero() {
 	// Arrange
-	query := queries.NewGetProductByIdQuery(uuid.Nil)
+	query := queries2.NewGetProductByIdQuery(uuid.Nil)
 
 	// Act
 	response, err := g.handler.Handle(g.Ctx, query)
@@ -131,7 +131,7 @@ func (g *getProductByIdHandlerUnitTests) Test_Handle_Should_Return_Error_When_Re
 		Return(nil, customErrors.NewNotFoundError(fmt.Sprintf("product with id %s not found", productID))).
 		Once()
 
-	query := queries.NewGetProductByIdQuery(productID)
+	query := queries2.NewGetProductByIdQuery(productID)
 
 	// Act
 	response, err := g.handler.Handle(g.Ctx, query)

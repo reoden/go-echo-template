@@ -1,8 +1,8 @@
 package logrous
 
 import (
-	"github.com/reoden/go-echo-template/internal/pkg/logger"
-	"github.com/reoden/go-echo-template/internal/pkg/logger/config"
+	"github.com/reoden/go-echo-template/pkg/logger"
+	"github.com/reoden/go-echo-template/pkg/logger/config"
 
 	"go.uber.org/fx"
 )

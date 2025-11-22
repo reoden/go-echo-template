@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/reoden/go-echo-template/internal/pkg/logger"
-	typeMapper "github.com/reoden/go-echo-template/internal/pkg/reflection/typemapper"
+	"github.com/reoden/go-echo-template/pkg/logger"
+	typeMapper "github.com/reoden/go-echo-template/pkg/reflection/typemapper"
 
 	"github.com/mehdihadeli/go-mediatr"
 )
